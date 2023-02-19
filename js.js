@@ -38,6 +38,8 @@ if (currentPerson != null) {
 else {
     menus[0].firstChild.value = optionsDictionary[0][0]
     menus[1].firstChild.value = optionsDictionary[1][0]
+    menus[0].children[1].children[0].style.color = "#1360a0"
+    menus[1].children[1].children[0].style.color = "#1360a0"
 }
 
 const person = {
