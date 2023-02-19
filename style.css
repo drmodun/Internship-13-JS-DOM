@@ -57,3 +57,27 @@ html{
     color: #00447c;
 
 }
+.select-activator{
+    padding:10px 20px;
+    display: flex;
+    color: #00447c;
+    font-weight: 700;
+    background-color: transparent;
+    border: #00447c 1px solid;
+    border-radius: 5px;
+}
+.open{
+    flex-direction: column;
+    border: 1px solid #414141;
+    border-radius: 5px;
+}
+.open > span{
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+.divider{
+    width: 100%;
+    background-color: #414141;
+    height: 0.5px;
+}
