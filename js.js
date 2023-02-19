@@ -1,8 +1,16 @@
 let inputs = document.querySelectorAll("input")
 let focusedInputs = []
 const activators = document.querySelectorAll(".select-activator")
+const menus = document.querySelectorAll(".select-menu")
 let options = document.querySelectorAll(".open > span")
 const closed = new Event("closed")
+const chosenOptions = [0, 0]
+const person = {
+    firstName: "",
+    secondName: "",
+    profession: "",
+    level: ""
+}
 inputs.forEach(element=>{
     console.log(options)
     //element.style.backgroundColor="#4555";
@@ -36,40 +44,42 @@ inputs.forEach(element=>{
         return
     })
 })
-options.forEach(element=>{
-    console.log(element)
-    element.addEventListener("mouseover", event=>{
-        element.style.cursor = "pointer"
-        element.style.backgroundColor="#ccc"
-    });
-    element.addEventListener("mouseout", event=>{
-        element.style.cursor = "default"
-        element.style.backgroundColor="white"
+menus.forEach(element=>{
+    let iterate = Array.prototype.indexOf.call(menus, element)
+    element.children[0].addEventListener("focus", event=>{
+        element.children[1].style.display="flex"
+        element.children[1].focus()
     })
-    element.addEventListener("click", event=>{
-        console.log(element.parentElement.children[1])
-        element.style.color="grey"
+    element.children[1].tabIndex = -1
+    element.children[1].childNodes.forEach(child=>{
+        child.addEventListener("click", event=>{
+            child.style.color="grey"
+            element.dispatchEvent(closed)
+            element.children[0].innerHTML=child.innerHTML;
+            chosenOptions[Array.prototype.indexOf.call(menus, element)]=(element.children[1].childNodes.indexOf(child))
+            element.children[1].childNodes.forEach(turnOff =>{
+                if (element.children.childNodes.indexOf(turnOff)!=chosenOptions[Array.prototype.indexOf.call(menus, element)]){
+                    turnOff.color = "black"
+                }
+            })
+        })
+        child.addEventListener("mouseover", event=>{
+            child.style.cursor="pointer"
+            child.style.backgroundColor="grey"
 
-        element.parentElement.parentElement.children[1].dispatchEvent(closed)
-    })
-})
-activators.forEach(element=>{
-    element.addEventListener("mouseover", event=>{
-        element.style.cursor = "pointer"
-    });
-    element.addEventListener("mouseout", event=>{
-        element.style.cursor = "default"
-    })
-    element.addEventListener("focus", event=>{
-        console.log("triggered");
-        element.parentElement.children[2].style.display="flex";
-        console.log(
-        element.parentElement.children[2])
+        })
+        child.addEventListener("mouseout", event=>{
+            child.style.cursor="default"
+            child.style.backgroundColor="transparent"
 
+        })
     })
+    element.children[1].addEventListener("focusout", event=>{
+        element.children[1].style.display="none"
+    })
+    element.children[0].relatedTargets
+    
     element.addEventListener("closed", event=>{
-        element.parentElement.children[2].style.display="none";
-
+        element.children[1].style.display="none"
     })
 })
-
