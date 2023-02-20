@@ -13,7 +13,7 @@ html{
     display: flex;
     flex-direction: row;
     min-height:90px;
-    width: 410px ;
+    width: 510px ;
     justify-content: space-between;
 }   
 .input{
@@ -25,11 +25,11 @@ html{
 .input > input{
     padding: 10px;
     color: black;
-    width: 178px;
+    width: 228px;
 }
 .select-row{
     display: flex;
-    width: 410px;
+    width: 510px;
     flex-direction: row;
     justify-content: space-between;
     font-size: 10px;
@@ -41,24 +41,25 @@ html{
 .links{
     margin-top: 20px;
     display: flex;
-    width: 410px;
+    width: 510px;
     flex-direction: row;
     justify-content: space-between;
 }
 .links > button{
     border-radius: 20px;
 
-    padding: 10px;
+    padding: 10px 15px;
     border: transparent;
     background-color:  #00447c;
     color: white;
-    font-size: 16px;
+    font-size: 12px;
+    font-weight: 700;
 }
 .links > a{
     text-decoration: none;
     font-weight: 700;
     color: #00447c;
-
+font-size: 12px;
 }
 .select-activator{
     padding:10px 10px;
@@ -70,7 +71,7 @@ html{
     background-color: transparent;
     border: #00447c 1px solid;
     border-radius: 5px;
-    min-width: 200px;
+    min-width: 250px;
     background-color: #F0F8F8;
 }
 .select-activator >span{
@@ -100,4 +101,9 @@ html{
 svg{
     height: 15px;
     display: flex;
+}
+.input-label{
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 5px;
 }
