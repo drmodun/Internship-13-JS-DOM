@@ -33,7 +33,6 @@ if (currentPerson != null) {
     chosenOptions[1] = Number(currentPerson.level);
     menus[0].children[1].children[chosenOptions[0] * 2].style.color = "#1360a0"
     menus[1].children[1].children[chosenOptions[1] * 2].style.color = "#1360a0"
-    console.log(Number(currentPerson.profession))
 }
 else {
     menus[0].firstChild.value = optionsDictionary[0][0]
@@ -54,16 +53,13 @@ inputs.forEach(element => {
     element.addEventListener("focus", (event) => {
         element.style.outline = "none"
         if (!invalidInputs.includes(element)) {
-            //console.log("wezt 8owes")
             element.style.backgroundColor = "transparent"
             element.style.borderColor = "#1360a0";
-            element.parentElement.firstElementChild.style.color = "#1360a0"        //element.style.backgroundColor = "white"
+            element.parentElement.firstElementChild.style.color = "#1360a0"
             focusedInputs.push(element)
-            console.log("sdfsadf", element.parentElement.firstElementChild)
         }
     });
     element.addEventListener("focusout", (event) => {
-        console.log("sdfsadf2")
         element.parentElement.firstElementChild.style.color = "black"
         if (element.value.trim().length == 0) {
             element.parentElement.lastElementChild.style.display = "flex";
@@ -80,7 +76,6 @@ inputs.forEach(element => {
     });
     element.addEventListener("mouseover", (event) => {
         if (!focusedInputs.includes(element)) {
-            console.log("sdfsadf1", focusedInputs)
             element.style.backgroundColor = "#4555";
         }
     })
@@ -96,9 +91,7 @@ menus.forEach(element => {
     })
     element.children[1].tabIndex = -1
     let childNodes = [...element.children[1].children]
-    console.log(childNodes)
     childNodes.forEach(child => {
-        console.log(child)
         if ([...child.classList].includes("select-text")) {
             child.addEventListener("click", event => {
                 childNodes.forEach(turnOff => {
@@ -109,7 +102,6 @@ menus.forEach(element => {
                 element.children[0].children[0].innerHTML = child.innerHTML;
                 chosenOptions[Array.prototype.indexOf.call(menus, element)] = childNodes.indexOf(child) / 2 //divided by two because dividers exist
                 child.style.color = "#1360a0"
-                console.log("aishdhipas")
                 element.dispatchEvent(closed)
             })
             child.addEventListener("mouseover", event => {
