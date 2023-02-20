@@ -13,7 +13,7 @@ html{
     display: flex;
     flex-direction: row;
     min-height:90px;
-    width: 500px;
+    width: 410px ;
     justify-content: space-between;
 }   
 .input{
@@ -23,12 +23,13 @@ html{
     min-height: 50px;
 }
 .input > input{
-    padding: 7px;
+    padding: 10px;
     color: black;
+    width: 178px;
 }
 .select-row{
     display: flex;
-    width: 500px;
+    width: 410px;
     flex-direction: row;
     justify-content: space-between;
     font-size: 10px;
@@ -40,7 +41,7 @@ html{
 .links{
     margin-top: 20px;
     display: flex;
-    width: 500px;
+    width: 410px;
     flex-direction: row;
     justify-content: space-between;
 }
@@ -60,14 +61,20 @@ html{
 
 }
 .select-activator{
-    padding:10px 20px;
+    padding:10px 10px;
     display: flex;
+    justify-content: space-between;
     color: #00447c;
+    flex-direction: row;
     font-weight: 700;
     background-color: transparent;
     border: #00447c 1px solid;
     border-radius: 5px;
     min-width: 200px;
+    background-color: #F0F8F8;
+}
+.select-activator >span{
+    display: flex;
 }
 .open{
     flex-direction: column;
@@ -89,4 +96,8 @@ html{
     font-size: 8px;
     color:#b30000;
     display: none;
+}
+svg{
+    height: 15px;
+    display: flex;
 }

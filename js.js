@@ -106,7 +106,7 @@ menus.forEach(element => {
                         turnOff.style.color = "black";
                     }
                 })
-                element.children[0].innerHTML = child.innerHTML;
+                element.children[0].children[0].innerHTML = child.innerHTML;
                 chosenOptions[Array.prototype.indexOf.call(menus, element)] = childNodes.indexOf(child) / 2 //divided by two because dividers exist
                 child.style.color = "#1360a0"
                 console.log("aishdhipas")
