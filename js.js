@@ -83,11 +83,13 @@ inputs.forEach(element => {
         element.style.backgroundColor = "transparent"
     })
 })
+let menusIndex = [...menus]
 menus.forEach(element => {
-    let iterate = Array.prototype.indexOf.call(menus, element)
+    element.children[1].style.display = "flex";
+    element.children[1].style.visibility = "hidden";
     element.children[0].addEventListener("focus", event => {
-        element.children[1].style.display = "flex"
-        element.children[1].focus()
+        element.children[1].style.visibility = "visible"
+        element.children[1].focus();
     })
     element.children[1].tabIndex = -1
     let childNodes = [...element.children[1].children]
@@ -100,29 +102,30 @@ menus.forEach(element => {
                     }
                 })
                 element.children[0].children[0].innerHTML = child.innerHTML;
-                chosenOptions[Array.prototype.indexOf.call(menus, element)] = childNodes.indexOf(child) / 2 //divided by two because dividers exist
+                chosenOptions[menusIndex.indexOf(element)] = childNodes.indexOf(child) / 2
                 child.style.color = "#1360a0"
                 element.dispatchEvent(closed)
             })
+
             child.addEventListener("mouseover", event => {
                 child.style.cursor = "pointer"
                 child.style.backgroundColor = "grey"
 
             })
+
             child.addEventListener("mouseout", event => {
                 child.style.cursor = "default"
                 child.style.backgroundColor = "transparent"
-
             })
         }
     })
+
     element.children[1].addEventListener("focusout", event => {
-        element.children[1].style.display = "none"
+        element.children[1].style.visibility = "hidden"
     })
-    element.children[0].relatedTargets
 
     element.addEventListener("closed", event => {
-        element.children[1].style.display = "none"
+        element.children[1].style.visibility = "hidden"
     })
 })
 sumbitButton.addEventListener("mouseover", event => {
