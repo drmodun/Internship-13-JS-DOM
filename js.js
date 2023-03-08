@@ -83,7 +83,7 @@ inputs.forEach(element => {
         element.style.backgroundColor = "transparent"
     })
 })
-let menusIndex = [...menus]
+const menusIndex = [...menus]
 menus.forEach(element => {
     element.children[1].style.display = "flex";
     element.children[1].style.visibility = "hidden";
@@ -92,32 +92,31 @@ menus.forEach(element => {
         element.children[1].focus();
     })
     element.children[1].tabIndex = -1
-    let childNodes = [...element.children[1].children]
+    const childNodes = [...element.children[1].children]
     childNodes.forEach(child => {
-        if ([...child.classList].includes("select-text")) {
-            child.addEventListener("click", event => {
-                childNodes.forEach(turnOff => {
-                    if ([...turnOff.classList].includes("select-text")) {
-                        turnOff.style.color = "black";
-                    }
-                })
-                element.children[0].children[0].innerHTML = child.innerHTML;
-                chosenOptions[menusIndex.indexOf(element)] = childNodes.indexOf(child) / 2
-                child.style.color = "#1360a0"
-                element.dispatchEvent(closed)
+        if (![...child.classList].includes("select-text"))
+            return
+        child.addEventListener("click", event => {
+            childNodes.forEach(turnOff => {
+                if ([...turnOff.classList].includes("select-text"))
+                    turnOff.style.color = "black";
             })
+            element.children[0].children[0].innerHTML = child.innerHTML;
+            chosenOptions[menusIndex.indexOf(element)] = childNodes.indexOf(child) / 2
+            child.style.color = "#1360a0"
+            element.dispatchEvent(closed)
+        })
 
-            child.addEventListener("mouseover", event => {
-                child.style.cursor = "pointer"
-                child.style.backgroundColor = "grey"
+        child.addEventListener("mouseover", event => {
+            child.style.cursor = "pointer"
+            child.style.backgroundColor = "grey"
 
-            })
+        })
 
-            child.addEventListener("mouseout", event => {
-                child.style.cursor = "default"
-                child.style.backgroundColor = "transparent"
-            })
-        }
+        child.addEventListener("mouseout", event => {
+            child.style.cursor = "default"
+            child.style.backgroundColor = "transparent"
+        })
     })
 
     element.children[1].addEventListener("focusout", event => {
